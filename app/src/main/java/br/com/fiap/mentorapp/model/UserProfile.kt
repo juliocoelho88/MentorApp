@@ -4,5 +4,6 @@ data class UserProfile(
     val name: String,
     val experience: String,
     val skills: List<String>,
-    val interests: List<String>
+    val interests: List<String>,
+    val education: String
 )
