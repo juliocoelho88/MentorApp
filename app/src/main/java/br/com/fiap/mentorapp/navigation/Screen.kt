@@ -3,6 +3,7 @@ sealed class Screen(val route: String) {
     object ChooseProfileType : Screen("choose_profile_type")
     object CreateProfileMentor : Screen("create_profile_mentor")
     object CreateProfileApprentice : Screen("create_profile_apprentice")
+    object Matchmaking : Screen("matchmaking")
     // Adicione mais telas conforme necessário
 }
 

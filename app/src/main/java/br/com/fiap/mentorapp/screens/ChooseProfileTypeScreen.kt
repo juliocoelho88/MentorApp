@@ -48,7 +48,14 @@ fun ChooseProfileTypeScreen(navController: NavHostController) {
             // Botão Mentor
             Button(
                 onClick = {
-                    navController.navigate(Screen.CreateProfileMentor.route)
+                    // Navega para a tela de criação de perfil para Mentor
+                    navController.navigate(Screen.CreateProfileMentor.route) {
+                        // Configurações opcionais de animação
+                        launchSingleTop = true
+                        popUpTo(Screen.ChooseProfileType.route) {
+                            inclusive = false
+                        }
+                    }
                 },
                 modifier = Modifier
                     .height(72.dp)
@@ -69,7 +76,14 @@ fun ChooseProfileTypeScreen(navController: NavHostController) {
             // Botão Aprendiz
             Button(
                 onClick = {
-                    navController.navigate(Screen.CreateProfileApprentice.route)
+                    // Navega para a tela de criação de perfil para Aprendiz
+                    navController.navigate(Screen.CreateProfileApprentice.route) {
+                        // Configurações opcionais de animação
+                        launchSingleTop = true
+                        popUpTo(Screen.ChooseProfileType.route) {
+                            inclusive = false
+                        }
+                    }
                 },
                 modifier = Modifier
                     .height(72.dp)
@@ -89,4 +103,5 @@ fun ChooseProfileTypeScreen(navController: NavHostController) {
         }
     }
 }
+
 

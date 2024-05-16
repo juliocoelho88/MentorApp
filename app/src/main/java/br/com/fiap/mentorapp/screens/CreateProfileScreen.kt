@@ -1,8 +1,8 @@
 package br.com.fiap.mentorapp.screens
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -12,75 +12,92 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import br.com.fiap.mentorapp.enum.ProfileType
+import br.com.fiap.mentorapp.model.UserProfile
+import br.com.fiap.mentorapp.viewmodel.MatchmakingViewModel
 
 @Composable
-fun CreateProfileScreen(navController: NavController, profileType: ProfileType) {
-    // Lógica para criar perfil
+fun CreateProfileScreen(
+    navController: NavController,
+    viewModel: MatchmakingViewModel,
+    profileType: ProfileType
+) {
     var name by remember { mutableStateOf("") }
     var experience by remember { mutableStateOf("") }
     var skills by remember { mutableStateOf("") }
     var interests by remember { mutableStateOf("") }
-    var formation by remember { mutableStateOf("") }
+    var education by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+            .padding(16.dp)
     ) {
-        Text(text = "Criar Perfil", fontSize = 24.sp)
-
+        // Campos de entrada para o cadastro
         TextField(
             value = name,
             onValueChange = { name = it },
-            label = { Text("Nome") }
+            label = { Text("Nome") },
+            modifier = Modifier.fillMaxWidth()
         )
 
         TextField(
             value = experience,
             onValueChange = { experience = it },
-            label = { Text("Experiência") }
+            label = { Text("Experiência (Se Mentor: 2 anos, 5 anos, Se Aprendiz: estudante)") },
+            modifier = Modifier.fillMaxWidth()
         )
 
         TextField(
             value = skills,
             onValueChange = { skills = it },
-            label = { Text("Habilidades") }
+            label = { Text("Habilidades (separadas por vírgula)") },
+            modifier = Modifier.fillMaxWidth()
         )
 
         TextField(
             value = interests,
             onValueChange = { interests = it },
-            label = { Text("Interesses") }
+            label = { Text("Interesses (separados por vírgula)") },
+            modifier = Modifier.fillMaxWidth()
         )
 
         TextField(
-            value = formation,
-            onValueChange = { formation = it },
-            label = { Text("Formação Acadêmica") }
+            value = education,
+            onValueChange = { education = it },
+            label = { Text("Educação") },
+            modifier = Modifier.fillMaxWidth()
         )
 
+        // Botão para salvar o perfil
         Button(
             onClick = {
-                // Aqui você pode processar os dados do formulário
-                val name = name
-                val experience = experience
-                val skills = skills
-                val interests = interests
-                val fomation = formation
+                val skillsList = skills.split(",").map { it.trim() }
+                val interestsList = interests.split(",").map { it.trim() }
 
-                // Exemplo: Enviar dados para ViewModel ou fazer outra ação necessária
-                // matchmakingViewModel.createProfile(name, experience, skills, interests)
+                val userProfile = UserProfile(
+                    name = name,
+                    experience = experience,
+                    skills = skillsList,
+                    interests = interestsList,
+                    education = education
+                )
+
+                viewModel.addUserProfile(userProfile)
+
+
+                // Navega de volta para a tela anterior
+                navController.popBackStack()
             },
-            modifier = Modifier.align(Alignment.End)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp)
         ) {
-            Text("Salvar")
+            Text("Salvar Perfil")
         }
     }
 }
+

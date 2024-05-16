@@ -7,3 +7,6 @@ data class UserProfile(
     val interests: List<String>,
     val education: String
 )
+
+
+

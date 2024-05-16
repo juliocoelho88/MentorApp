@@ -1,12 +1,15 @@
 package br.com.fiap.mentorapp.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.com.fiap.mentorapp.enum.ProfileType
 import br.com.fiap.mentorapp.screens.ChooseProfileTypeScreen
 import br.com.fiap.mentorapp.screens.CreateProfileScreen
+import br.com.fiap.mentorapp.screens.MatchmakingScreen
+import br.com.fiap.mentorapp.viewmodel.MatchmakingViewModel
 
 @Composable
 fun AppNavigation() {
@@ -17,10 +20,13 @@ fun AppNavigation() {
             ChooseProfileTypeScreen(navController = navController)
         }
         composable(Screen.CreateProfileMentor.route) {
-            CreateProfileScreen(profileType = ProfileType.MENTOR, navController = navController)
+            CreateProfileScreen(profileType = ProfileType.MENTOR, navController = navController, viewModel = MatchmakingViewModel())
         }
         composable(Screen.CreateProfileApprentice.route) {
-            CreateProfileScreen(profileType = ProfileType.APPRENTICE, navController = navController)
+            CreateProfileScreen(profileType = ProfileType.APPRENTICE, navController = navController, viewModel = MatchmakingViewModel())
+        }
+        composable(Screen.Matchmaking.route) {
+            MatchmakingScreen(matchmakingViewModel = viewModel(), navController = navController)
         }
         // Adicione mais destinos (telas) conforme necessário
     }
