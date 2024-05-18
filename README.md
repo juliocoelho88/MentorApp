@@ -39,7 +39,7 @@ O aplicativo segue a arquitetura MVVM, onde:
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/seuusuario/MentorApp.git
+   git clone https://github.com/juliocoelho88/MentorApp.git
    cd MentorApp
    ```
 
@@ -160,4 +160,4 @@ Sinta-se à vontade para contribuir para este projeto enviando issues ou pull re
 ### Contato
 
 - Email: juliocoelho0288@gmail.com
-- GitHub: [seuusuario](https://github.com/julicooelho88)
+- GitHub: [juliocoelho88](https://github.com/julicooelho88)
