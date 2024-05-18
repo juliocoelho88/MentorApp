@@ -159,5 +159,5 @@ Sinta-se à vontade para contribuir para este projeto enviando issues ou pull re
 
 ### Contato
 
-- Email: seu-email@example.com
-- GitHub: [seuusuario](https://github.com/seuusuario)
+- Email: juliocoelho0288@gmail.com
+- GitHub: [seuusuario](https://github.com/julicooelho88)
