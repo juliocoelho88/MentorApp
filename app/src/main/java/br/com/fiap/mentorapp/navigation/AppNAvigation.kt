@@ -9,6 +9,8 @@ import br.com.fiap.mentorapp.enum.ProfileType
 import br.com.fiap.mentorapp.screens.ChooseProfileTypeScreen
 import br.com.fiap.mentorapp.screens.CreateProfileScreen
 import br.com.fiap.mentorapp.screens.MatchmakingScreen
+import br.com.fiap.mentorapp.screens.SearchResultsScreen
+import br.com.fiap.mentorapp.screens.SearchScreen
 import br.com.fiap.mentorapp.viewmodel.MatchmakingViewModel
 
 @Composable
@@ -27,6 +29,12 @@ fun AppNavigation() {
         }
         composable(Screen.Matchmaking.route) {
             MatchmakingScreen(matchmakingViewModel = viewModel(), navController = navController)
+        }
+        composable(Screen.Search.route) {
+            SearchScreen(navController)
+        }
+        composable(Screen.SearchResults.route) {
+            SearchResultsScreen(navController)
         }
         // Adicione mais destinos (telas) conforme necessário
     }
